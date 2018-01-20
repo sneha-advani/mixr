@@ -44,7 +44,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email playlist-read-private playlist-modify playlist-modify-private';
+  var scope = 'user-read-private user-read-email playlist-read-private playlist-modify playlist-modify-private user-top-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -98,16 +98,28 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-          console.log(body);
+
+          // Get Top Artists
+          var artistOptions = {
+            url: 'https://api.spotify.com/v1/me/top/artists?limit=10',
+            headers: { 'Authorization': 'Bearer ' + access_token },
+            json: true
+          }
+          request.get(artistOptions, function(error, response, body) {
+            console.log("top artists:");
+            console.log(body);
+          });
+
+          //Get Recommendations
+          
+
+          //Create Playlist
           var postOptions = {
             url: 'https://api.spotify.com/v1/users/' +  body.id + '/playlists',
             headers: { 'Authorization': 'Bearer ' + access_token , 'Content-Type': 'application/json'},
             body: JSON.stringify({name: "my mixr playlist"})
           };
           request.post(postOptions, function(error, response, body) {
-            console.log('posted');
-            console.log(body);
-            console.log(error);
           });
         });
 
