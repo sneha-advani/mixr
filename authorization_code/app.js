@@ -44,7 +44,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email';
+  var scope = 'user-read-private user-read-email playlist-read-private playlist-modify playlist-modify-private';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -99,8 +99,19 @@ app.get('/callback', function(req, res) {
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
           console.log(body);
+          var postOptions = {
+            url: 'https://api.spotify.com/v1/users/' +  body.id + '/playlists',
+            headers: { 'Authorization': 'Bearer ' + access_token , 'Content-Type': 'application/json'},
+            body: JSON.stringify({name: "my mixr playlist"})
+          };
+          request.post(postOptions, function(error, response, body) {
+            console.log('posted');
+            console.log(body);
+            console.log(error);
+          });
         });
 
+      
         // we can also pass the token to the browser to make requests from there
         res.redirect('/#' +
           querystring.stringify({
@@ -140,6 +151,7 @@ app.get('/refresh_token', function(req, res) {
     }
   });
 });
+
 
 console.log('Listening on 8888');
 app.listen(8888);
