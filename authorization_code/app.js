@@ -104,7 +104,7 @@ app.get('/callback', function(req, res) {
           var postOptions = {
             url: 'https://api.spotify.com/v1/users/' +  body.id + '/playlists',
             headers: { 'Authorization': 'Bearer ' + access_token , 'Content-Type': 'application/json'},
-            body: JSON.stringify({name: "my mixr playlist"})
+            body: JSON.stringify({name: "mixr"})
           };
           request.post(postOptions, function(error, response, body) {
             playlistID = JSON.parse(body).id;
@@ -113,7 +113,7 @@ app.get('/callback', function(req, res) {
 
           // Get Top Artists
           var artistOptions = {
-            url: 'https://api.spotify.com/v1/me/top/artists?limit=10',
+            url: 'https://api.spotify.com/v1/me/top/artists?limit=5',
             headers: { 'Authorization': 'Bearer ' + access_token },
             json: true
           }
@@ -131,7 +131,7 @@ app.get('/callback', function(req, res) {
 
             //Get Recommendations
             var recommendationOptions = {
-              url: 'https://api.spotify.com/v1/recommendations?limit=10&seed_artists=' + body.items[0].id,
+              url: 'https://api.spotify.com/v1/recommendations?limit=50&seed_artists=' + body.items[0].id + "," + body.items[1].id + "," + body.items[2].id + "," + body.items[3].id + "," + body.items[4].id,
               headers: { 'Authorization': 'Bearer ' + access_token },
               json: true
             }
