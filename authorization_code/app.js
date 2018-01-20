@@ -107,9 +107,7 @@ app.get('/callback', function(req, res) {
             body: JSON.stringify({name: "my mixr playlist"})
           };
           request.post(postOptions, function(error, response, body) {
-            playlistID = body['id'];
-            console.log(body);
-            console.log(body['id']);
+            playlistID = JSON.parse(body).id;
             console.log("playlistid:" + playlistID);
           });
 
@@ -120,6 +118,16 @@ app.get('/callback', function(req, res) {
             json: true
           }
           request.get(artistOptions, function(error, response, body) {
+            // Variables for recommendations 
+            var target_danceability;
+            var target_acousticness;
+            var target_energy;
+            var target_instrumentalness;
+            var target_liveness; // sounds more like it's live
+            var target_loudness;
+            var mode; // 1 = major, 0 = minor
+            var target_tempo;
+            var target_valence;
 
             //Get Recommendations
             var recommendationOptions = {
