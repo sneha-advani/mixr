@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
   <head>
-    <title>Example of the Authorization Code flow with Spotify by Roopa Chandra</title>
+    <title>mixr</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <style type="text/css">
       #login, #loggedin {
         display: none;
@@ -19,12 +20,24 @@
   <body>
     <div class="container">
       <div id="login">
-        <h1>MIXR: Generate the Perfect Playlist</h1>
+        <h1>MIXR: Generate the Perfect Playlist for your Personality</h1>
 		<form>
-			<h4>Mood </h4>
-				<input type="radio" name="mood" value="Happy" checked> Happy<br>
+			<h4>How are you feeling right now?</h4>
+				<input type="radio" name="mood" value="Happy"> Happy<br>
 				<input type="radio" name="mood" value="Chill"> Chill<br>
 				<input type="radio" name="mood" value="Sad"> Sad  
+      <h4>How many people are listening?</h4>
+        <input type="radio" name="people" value="1">1<br>
+        <input type="radio" name="people" value="2">2-5<br>
+        <input type="radio" name="people" value="5">5-20<br>
+        <input type="radio" name="people" value="20">20+
+      <h4>Do you like concerts?</h4>
+        <input type="radio" name="concerts" value="yes">Yes<br>
+        <input type="radio" name="concerts" value="no">No
+      <h4>Do you like to dance?</h4>
+        <input type="radio" name="dance" value="yes">Yes<br>
+        <input type="radio" name="dance" value="no">No<br>
+        <input type="radio" name="dance" value="sometimes">Sometimes<br>
 		</form> 
         <a href="/login" class="btn btn-primary">Generate Playlist</a>
       </div>
