@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+body {
+    background: linear-gradient(#404040, #0C0C0C);
+    font-family: 'Lato', sans-serif;
+    font-size: 15pt;
+    color: white;
+}
+
+.button {
+	background-color: #24A14F;
+
+}
