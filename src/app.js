@@ -108,7 +108,6 @@ app.get('/callback', function(req, res) {
           };
           request.post(postOptions, function(error, response, body) {
             playlistID = JSON.parse(body).id;
-            console.log("playlistid:" + playlistID);
           });
 
           // Get Top Artists
@@ -129,6 +128,18 @@ app.get('/callback', function(req, res) {
             var target_tempo;
             var target_valence;
 
+            // if (document.querySelector('input[name="mood"]:checked').value === 'happy') {
+            //   console.log('happy');
+            // }
+            // else if (document.querySelector('input[name="mood"]:checked').value=== 'sad') {
+            //   console.log('sad');
+            // }
+            // else if (document.querySelector('input[name="mood"]:checked').value === 'chill') {
+            //   console.log('chill');
+            // }
+
+            
+
             //Get Recommendations
             var recommendationOptions = {
               url: 'https://api.spotify.com/v1/recommendations?limit=50&seed_artists=' + body.items[0].id + "," + body.items[1].id + "," + body.items[2].id + "," + body.items[3].id + "," + body.items[4].id,
@@ -136,14 +147,11 @@ app.get('/callback', function(req, res) {
               json: true
             }
             request.get(recommendationOptions, function (error, response, body) {
-              console.log('first recommended uri:' + body.tracks[0].uri);
               var trackArray = [];
               for (i = 0; i < body.tracks.length; i++) {
                 trackArray.push(body.tracks[i].uri);
               }
-              console.log('track array:' + trackArray);
               // Add songs from recommendations
-              console.log("adding to user: " + username + ", playlist id: " + playlistID);
               var playlistOptions = {
                 url: 'https://api.spotify.com/v1/users/' + username + '/playlists/' + playlistID + '/tracks',
                 headers: { 'Authorization': 'Bearer ' + access_token , 'Content-Type': 'application/json'},
