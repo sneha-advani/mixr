@@ -1,13 +1,59 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {
-    background: linear-gradient(#404040, #0C0C0C);
+    /*background: linear-gradient(#404040, #0C0C0C);*/
+    background-color: #404040;
     font-family: 'Lato', sans-serif;
-    font-size: 15pt;
+    font-size: 16pt;
     color: white;
+    text-align: center;
 }
 
-.button {
-	background-color: #24A14F;
 
+.button {
+	background-color: #1ED760; /* Green */
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 18px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius:12px;
+	font-weight: bold;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 50pt;
+	color: #1ED760 ;
+}
+
+h2 {
+	font-size: 20pt;
+}
+
+h4 {
+	font-size: 18pt;
+	color: #1ED760 ;
+	font-weight: bold;
+}
+
+.question {
+	background-color: black;
+	border-radius:6px;
+	opacity: 0.7;
+	width: 400px;
+	justify-content: center;
+}
+
+.question:hover {
+	opacity: 0.8;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
 }

@@ -33,26 +33,45 @@
   <body>
     <div class="container">
       <div id="login">
-        <h1>MIXR: Generate the Perfect Playlist for your Personality</h1>
-		<form>
-			<h4>How are you feeling right now?</h4>
-				<input type="radio" name="mood" value="Happy"> Happy<br>
-				<input type="radio" name="mood" value="Chill"> Chill<br>
-				<input type="radio" name="mood" value="Sad"> Sad  
-      <h4>How many people are listening?</h4>
-        <input type="radio" name="people" value="1">1<br>
-        <input type="radio" name="people" value="2">2-5<br>
-        <input type="radio" name="people" value="5">5-20<br>
-        <input type="radio" name="people" value="20">20+
-      <h4>Do you like concerts?</h4>
-        <input type="radio" name="concerts" value="yes">Yes<br>
-        <input type="radio" name="concerts" value="no">No
-      <h4>Do you like to dance?</h4>
-        <input type="radio" name="dance" value="yes">Yes<br>
-        <input type="radio" name="dance" value="no">No<br>
-        <input type="radio" name="dance" value="sometimes">Sometimes<br>
+        <h1>mixr</h1>
+        <h2>generate the perfect playlist for your personality</h2>
+        <span style="display:block; height: 20px;"></span>
+
+		<form action="/submit" method="get">
+      <div class="question">
+			<h4>1. how are you feeling right now?</h4>
+				<input type="radio" name="mood" value="happy"> happy<br>
+				<input type="radio" name="mood" value="chill"> chill<br>
+				<input type="radio" name="mood" value="sad"> sad  
+        <span style="display:block; height: 10px;"></span>
+      </div>
+      <span style="display:block; height: 10px;"></span>
+      <div class="question">
+      <h4>2. how many people are listening?</h4>
+        <input type="radio" name="people" value="1"> 1<br>
+        <input type="radio" name="people" value="2"> 2-5<br>
+        <input type="radio" name="people" value="5"> 5-20<br>
+        <input type="radio" name="people" value="20"> 20+
+        <span style="display:block; height: 10px;"></span>
+      </div>
+      <span style="display:block; height: 10px;"></span>
+      <div class="question">
+      <h4>3. do you like concerts?</h4>
+        <input type="radio" name="concerts" value="yes"> yes<br>
+        <input type="radio" name="concerts" value="no"> no
+        <span style="display:block; height: 10px;"></span>
+      </div>
+      <span style="display:block; height: 10px;"></span>
+      <div class="question">
+      <h4>4. do you like to dance?</h4>
+        <input type="radio" name="dance" value="yes"> yes<br>
+        <input type="radio" name="dance" value="no"> no<br>
+        <input type="radio" name="dance" value="sometimes"> sometimes<br>
+        <span style="display:block; height: 10px;"></span>
+      </div>
+      <span style="display:block; height: 10px;"></span>
+        <input class="button" type="submit" value="Generate Playlist">
 		</form> 
-        <a href="/login" class="button">Generate Playlist</a>
       </div>
       <div id="loggedin">
         <div id="user-profile">
