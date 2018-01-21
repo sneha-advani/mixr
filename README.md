@@ -6,3 +6,5 @@ Mixr solves this problem by generating custom playlists based on a short questio
 
 # How we built it
 We utilized HTML, CSS, and JavaScript, in combination with an Express server and the Spotify API.
+
+Created by Sneha Advani and Roopa Chandra for PennApps Spring 2018.
