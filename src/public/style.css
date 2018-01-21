@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {
-    background: linear-gradient(#404040, #0C0C0C);
-    /*background-color: #000000;*/
+    /*background: linear-gradient(#404040, #0C0C0C);*/
+    background-color: #404040;
     font-family: 'Lato', sans-serif;
     font-size: 16pt;
     color: white;
@@ -11,7 +11,7 @@ body {
 
 
 .button {
-	background-color: #1DB954; /* Green */
+	background-color: #1ED760; /* Green */
 	border: none;
 	color: white;
 	padding: 10px 20px;
@@ -28,7 +28,7 @@ body {
 h1 {
 	font-weight: bold;
 	font-size: 50pt;
-	color: #1DB954;
+	color: #1ED760 ;
 }
 
 h2 {
@@ -37,18 +37,20 @@ h2 {
 
 h4 {
 	font-size: 18pt;
+	color: #1ED760 ;
+	font-weight: bold;
 }
 
 .question {
-	background-color: #828282;
-	border-radius:12px;
-	opacity: 0.8;
+	background-color: black;
+	border-radius:6px;
+	opacity: 0.7;
 	width: 400px;
 	justify-content: center;
 }
 
 .question:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 .container {
