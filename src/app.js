@@ -132,35 +132,55 @@ app.get('/callback', function(req, res) {
           request.get(artistOptions, function(error, response, body) {
             // Variables for recommendations 
             var target_danceability;
-            var target_acousticness;
             var target_energy;
-            var target_instrumentalness;
             var target_liveness; // sounds more like it's live
             var target_loudness;
-            var mode; // 1 = major, 0 = minor
-            var target_tempo;
             var target_valence;
 
-            console.log(mood);
-            console.log(people);
-            console.log(dance);
-            console.log(concerts);
+            if (mood === 'happy') {
+              target_valence = 0.9;
+            } else if (mood === 'sad') {
+              target_valence = 0.2;
 
-            // console.log(req.document.querySelector('input[name="mood"]:checked').value);
-            // if (document.querySelector('input[name="mood"]:checked').value === 'happy') {
-            //   console.log('happy');
-            // }
-            // else if (document.querySelector('input[name="mood"]:checked').value=== 'sad') {
-            //   console.log('sad');
-            // }
-            // else if (document.querySelector('input[name="mood"]:checked').value === 'chill') {
-            //   console.log('chill');
-            // }
+            } else if (mood === 'chill') {
+              target_valence = 0.6;
+            } else if (mood === 'upset') {
+              target_valence = 0.1;
+            }
 
+            if (people === '1') {
+              target_energy = 0.2;
+              target_loudness = -45;
+            } else if (people === '2') {
+              target_energy = 0.4;
+              target_loudness = -30;
+            } else if (people === '5') {
+              target_energy = 0.6;
+              target_loudness = -15;
+            } else if (people === '20') {
+              target_energy = 0.8;
+              target_loudness = -3;
+            }
+
+            if (concerts === 'yes') {
+              target_liveness = 0.75;
+            } else if (concerts === 'no') {
+              target_liveness = 0.4;
+            }
+
+            if (dance === 'yes') {
+              target_danceability = 0.9;
+            } else if (dance === 'no') {
+              target_danceability = 0.15;
+            } else if (dance === 'sometimes') {
+              target_danceability = 0.6;
+            }
 
             //Get Recommendations
             var recommendationOptions = {
-              url: 'https://api.spotify.com/v1/recommendations?limit=50&seed_artists=' + body.items[0].id + "," + body.items[1].id + "," + body.items[2].id + "," + body.items[3].id + "," + body.items[4].id,
+              url: 'https://api.spotify.com/v1/recommendations?limit=50&seed_artists=' + body.items[0].id + "," + body.items[1].id + 
+              "," + body.items[2].id + "," + body.items[3].id + "," + body.items[4].id + '&target_valence=' + target_valence + '&target_energy=' + target_energy
+              + '&target_danceability=' + target_danceability + '&target_loudness=' + target_loudness + '&target_liveness=' + target_liveness,
               headers: { 'Authorization': 'Bearer ' + access_token },
               json: true
             }
@@ -177,7 +197,6 @@ app.get('/callback', function(req, res) {
               }
 
               request.post(playlistOptions, function(error, response, body) {
-                console.log("added tracks");
               });
 
 
