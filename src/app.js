@@ -59,12 +59,14 @@ var mood;
 var people;
 var concerts;
 var dancing;
+var occasion;
 
 app.get('/submit', function(req, res) {
   mood = req.query.mood;
   people = req.query.people;
   concerts = req.query.concerts;
   dance = req.query.dance;
+  occasion = req.query.occasion;
   res.redirect('/login');
 });
 
@@ -150,16 +152,21 @@ app.get('/callback', function(req, res) {
 
             if (people === '1') {
               target_energy = 0.2;
-              target_loudness = -45;
             } else if (people === '2') {
               target_energy = 0.4;
-              target_loudness = -30;
             } else if (people === '5') {
               target_energy = 0.6;
-              target_loudness = -15;
             } else if (people === '20') {
               target_energy = 0.8;
+            }
+            if(occasion === 'party') {
               target_loudness = -3;
+            } else if (occasion === 'kickback'){
+              target_loudness = -30;
+            } else if(occasion === 'focus'){
+              target_loudness = -48;
+            } else if(occasion === 'roadtrip'){
+              target_loudness = -15;
             }
 
             if (concerts === 'yes') {
@@ -175,6 +182,8 @@ app.get('/callback', function(req, res) {
             } else if (dance === 'sometimes') {
               target_danceability = 0.6;
             }
+
+            
 
             //Get Recommendations
             var recommendationOptions = {
