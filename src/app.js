@@ -213,10 +213,6 @@ app.get('/callback', function(req, res) {
 
           });
 
-          
-
-
-
         });
 
       
