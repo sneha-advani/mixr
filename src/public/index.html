@@ -20,8 +20,8 @@
   <body>
     <div class="container">
       <div id="login">
-        <h1>MIXR: Generate the Perfect Playlist for your Personality</h1>
-		<form>
+        <h1>mixr: Generate the Perfect Playlist for your Personality</h1>
+		<form action="/submit" method="get">
 			<h4>How are you feeling right now?</h4>
 				<input type="radio" name="mood" value="happy"> Happy<br>
 				<input type="radio" name="mood" value="chill"> Chill<br>
@@ -38,8 +38,8 @@
         <input type="radio" name="dance" value="yes">Yes<br>
         <input type="radio" name="dance" value="no">No<br>
         <input type="radio" name="dance" value="sometimes">Sometimes<br>
+        <input type="submit" value="Generate Playlist">
 		</form> 
-        <a href="/login" class="btn btn-primary">Generate Playlist</a>
       </div>
       <div id="loggedin">
         <div id="user-profile">

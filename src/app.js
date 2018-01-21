@@ -55,6 +55,19 @@ app.get('/login', function(req, res) {
     }));
 });
 
+var mood;
+var people;
+var concerts;
+var dancing;
+
+app.get('/submit', function(req, res) {
+  mood = req.query.mood;
+  people = req.query.people;
+  concerts = req.query.concerts;
+  dance = req.query.dance;
+  res.redirect('/login');
+});
+
 app.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
@@ -128,6 +141,12 @@ app.get('/callback', function(req, res) {
             var target_tempo;
             var target_valence;
 
+            console.log(mood);
+            console.log(people);
+            console.log(dance);
+            console.log(concerts);
+
+            // console.log(req.document.querySelector('input[name="mood"]:checked').value);
             // if (document.querySelector('input[name="mood"]:checked').value === 'happy') {
             //   console.log('happy');
             // }
@@ -138,7 +157,6 @@ app.get('/callback', function(req, res) {
             //   console.log('chill');
             // }
 
-            
 
             //Get Recommendations
             var recommendationOptions = {
